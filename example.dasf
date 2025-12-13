@@ -1,0 +1,47 @@
+DASF-01
+title: AND YOU DON'T SEEM TO UNDERSTAND
+Quiz/Welcome:{
+  "description": "Invia un messaggio di benvenuto al nuovo utente del quiz e riceve la prima domanda.",
+  "takeoffPort": 8020,
+  "landingPort": 8021,
+  "parameters": {
+    "id": {
+      "type": "string",
+      "description": "Identificativo di sessione del client."
+    }
+  },
+  "sentPayload": {
+    "type": "binary",
+    "endianness": "big-endian",
+    "body": [
+      {
+        "fieldName": "messageType",
+        "dataType": "uint16"
+      },
+      {
+        "fieldName": "userName",
+        "dataType": "string",
+        "length": 64,
+        "encoding": "UTF-8"
+      }
+    ],
+    "example": "00014C756361..."
+  },
+  "receivedPayload": {
+    "type": "json",
+    "body": {
+      "questionId": {
+        "type": "integer"
+      },
+      "questionText": {
+        "type": "string"
+      }
+    },
+    "example": "{\"questionId\":10, \"questionText\":\"What is UDP?\"}"
+  }
+}
+Echo:{
+  "description": "Manda un messaggio vuoto.",
+  "takeoffPort": 1540,
+  "landingPort": 1540
+}

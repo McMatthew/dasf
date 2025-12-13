@@ -1,0 +1,155 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #212529;
+    padding: 0px;
+    margin: 0;
+}
+
+code {
+    background-color: #e9ecef;
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    border-radius: 3px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+pre {
+    background: #f1f3f5;
+    border: 1px solid #e8d4fcff;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    font-size: 100%;
+}
+
+h2, h3, h4, h5 {
+    color: #8126d9;
+    margin-top: 1.5rem;
+}
+
+h2 {
+    border-bottom: 2px solid #e8d4fcff;
+    padding-bottom: 0.5rem;
+}
+
+.error-message {
+    color: #d93025;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+/* DASF Viewer styles */
+.dasf-viewer {
+    max-width: 1024px;
+    margin: auto;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.endpoint-view {
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.endpoint-view:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ports-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: #e8d4fcff;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.ports-info span {
+    font-weight: 500;
+}
+
+.endpoint-section {
+    margin-top: 1.5rem;
+    padding-left: 1.5rem;
+    border-left: 3px solid #b66cfeff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 1px solid #e8d4fcff;
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+ul {
+    margin-top: 0.5rem;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    gap: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.editor-pane {
+    flex: 1;
+    overflow: auto;
+    height: 100%;
+    border: 1px solid #e8d4fcff;
+    border-radius: 5px;
+}
+
+.viewer-pane {
+    flex: 1;
+    overflow: auto;
+    padding: 2rem;
+}
+
+.file-loader {
+    padding: 1rem;
+    border-bottom: 1px solid #e8d4fcff;
+}
+
+.center {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    flex-wrap: wrap;
+    place-items: center;
+}
+
+.courtesy-message {
+    font-weight: 600;
+    text-align: center;
+}
