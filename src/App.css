@@ -31,7 +31,7 @@ pre code {
 }
 
 h2, h3, h4, h5 {
-    color: #8126d9;
+    color: var(--mantine-color-iris-6);
     margin-top: 1.5rem;
 }
 
@@ -74,7 +74,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    background: #e8d4fcff;
+    background: var(--mantine-color-iris-0);
     padding: 0.75rem 1rem;
     border-radius: 5px;
     margin: 1rem 0;
@@ -88,7 +88,7 @@ h2 {
 .endpoint-section {
     margin-top: 1.5rem;
     padding-left: 1.5rem;
-    border-left: 3px solid #b66cfeff;
+    border-left: 3px solid var(--mantine-color-iris-2);
 }
 
 table {
@@ -98,7 +98,7 @@ table {
 }
 
 th, td {
-    border: 1px solid #e8d4fcff;
+    border: 1px solid var(--mantine-color-gray-1);
     padding: 0.75rem;
     text-align: left;
     vertical-align: top;
@@ -126,7 +126,7 @@ ul {
     flex: 1;
     overflow: auto;
     height: 100%;
-    border: 1px solid #e8d4fcff;
+    border: 1px solid var(--mantine-color-iris-0);
     border-radius: 5px;
 }
 
@@ -138,7 +138,7 @@ ul {
 
 .file-loader {
     padding: 1rem;
-    border-bottom: 1px solid #e8d4fcff;
+    border-bottom: 1px solid var(--mantine-color-iris-0);
 }
 
 .center {
