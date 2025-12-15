@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import {useMemo} from 'react';
 import DasfEditor from './dasf/DasfEditor';
 import DasfViewer from './dasf/DasfViewer';
 import {DASFParser} from './dasf/parser';
@@ -6,10 +6,13 @@ import type {DasfDocument} from './dasf/types';
 import lettering from './assets/lettering.svg';
 import './App.css';
 import {Button, FileButton, Flex, Stack} from "@mantine/core";
-import {getHotkeyHandler, useDebouncedValue} from "@mantine/hooks";
+import {getHotkeyHandler, useDebouncedValue, useLocalStorage} from "@mantine/hooks";
 
 function App() {
-    const [rawText, setRawText] = useState<string>('');
+    const [rawText, setRawText] = useLocalStorage<string>({
+        key: 'dasf-rawText',
+        defaultValue: '',
+    });
     const [debouncedText] = useDebouncedValue(rawText, 500);
 
     const { parsedDoc, error } = useMemo(() => {
