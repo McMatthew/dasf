@@ -33,10 +33,10 @@ export class DASFParser {
         // This regex finds a closing brace, any whitespace (including newlines), and then the next key.
         // It adds a comma and quotes the key it finds.
         // Keys can contain letters, numbers, slash, underscore, dot, and hyphen.
-        body = body.replace(/}\s*([a-zA-Z0-9\/\_.-]+)\s*:/g, '},\n"$1":');
+        body = body.replace(/}\s*([a-zA-Z0-9/_.$-]+)\s*:/g, '},\n"$1":');
 
         // 3. Quote the very first key, which isn't preceded by a '}' and thus not matched by the above.
-        body = body.replace(/^\s*([a-zA-Z0-9\/\_.-]+)\s*:/g, '"$1":');
+        body = body.replace(/^\s*([a-zA-Z0-9/_.$-]+)\s*:/g, '"$1":');
 
         const jsonString = `{${body}}`;
 

@@ -1,47 +1,212 @@
 DASF-01
-title: AND YOU DON'T SEEM TO UNDERSTAND
-Quiz/Welcome:{
-  "description": "Invia un messaggio di benvenuto al nuovo utente del quiz e riceve la prima domanda.",
-  "takeoffPort": 8020,
-  "landingPort": 8021,
-  "parameters": {
-    "id": {
-      "type": "string",
-      "description": "Identificativo di sessione del client."
-    }
-  },
-  "sentPayload": {
-    "type": "binary",
-    "endianness": "big-endian",
-    "body": [
-      {
-        "fieldName": "messageType",
-        "dataType": "uint16"
+title: Interfaccia UDP request SIDA
+AppIdentity:{
+  "description": "Ritorna informazioni inerenti alla macchina e al software che gira su una specifica macchina",
+  "takeoffPort": 1540,
+  "landingPort": 1540,
+  "receivedPayload": {
+    "type": "json",
+    "body": {
+      "$allOf": ["$interfaces.SidaServerConfiguration"],
+      "ProductGUID": {
+        "type": "string"
       },
-      {
-        "fieldName": "userName",
-        "dataType": "string",
-        "length": 64,
-        "encoding": "UTF-8"
+      "GUID": {
+        "type": "string"
+      },
+      "AppName": {
+        "type": "string"
+      },
+      "AppVersion": {
+        "type": "string"
+      },
+      "StartUTC": {
+        "type": "string"
+      },
+      "HostName": {
+        "type": "string"
+      },
+      "CPU": {
+        "type": "string"
+      },
+      "PCores": {
+        "type": "integer"
+      },
+      "LCores": {
+        "type": "integer"
+      },
+      "Speed": {
+        "type": "integer"
+      },
+      "MemoryLoad": {
+        "type": "integer"
+      },
+      "Memory": {
+        "type": "integer"
+      },
+      "NetworkType": {
+        "type": "string"
+      },
+      "MacAddress": {
+        "type": "string"
+      },
+      "TxSpeed": {
+        "type": "integer"
+      },
+      "RxSpeed": {
+        "type": "integer"
+      },
+      "ClientIP": {
+        "type": "string"
+      },
+      "ClientPort": {
+        "type": "integer"
+      },
+      "WebConnection": {
+        "type": "integer"
+      },
+      "OS": {
+        "type": "string"
+      },
+      "OS_VH": {
+        "type": "integer"
+      },
+      "SidaServerConfiguration": {
+        "type": "$interfaces.SidaServerConfiguration"
       }
-    ],
-    "example": "00014C756361..."
+    }
+  }
+}
+GetAddress: {
+  "description": "Ricerca dei software Licenza sulle macchine in rete",
+  "takeoffPort": 1540,
+  "landingPort": 1540,
+  "receivedPayload": {
+    "type": "string",
+    "example": "10.0.0.12"
+  }
+}
+GetSimulatori: {
+  "description": "Ricerca dei simulatori in rete",
+  "takeoffPort": 1540,
+  "landingPort": 1540,
+  "receivedPayload": {
+    "type": "json",
+    "body": {
+      "ip": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      }
+    }
+  }
+}
+Detect: {
+  "description": "Ricerca dei programmi in rete (esempio SIDASYNC)",
+  "takeoffPort": 1540,
+  "landingPort": 1540,
+  "parameters": {
+    "program":{
+      "type": "string",
+      "description": "Nome del programma"
+    },
+    "activeonly":{
+      "type": "string",
+      "description": "Filtro per programmi attualmente attivi (\"yes\" o \"no\")"
+    }
   },
   "receivedPayload": {
     "type": "json",
     "body": {
-      "questionId": {
-        "type": "integer"
+      "ip": {
+        "type": "string"
       },
-      "questionText": {
+      "name": {
+        "type": "string"
+      },
+      "instanceGUID": {
         "type": "string"
       }
-    },
-    "example": "{\"questionId\":10, \"questionText\":\"What is UDP?\"}"
+    }
   }
 }
-Echo:{
-  "description": "Manda un messaggio vuoto.",
+DetectHttpServer: {
+  "description": "Ricerca dei server HTTP come SGC o AULA",
+  "takeoffPort": 1540,
+  "landingPort": 1540,
+  "parameters": {
+    "program":{
+      "type": "string",
+      "description": "Nome del programma"
+    }
+  },
+  "receivedPayload": {
+    "type": "json",
+    "body": {
+      "ip": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "HttpPort": {
+        "type": "integer"
+      },
+      "WebSocket": {
+        "type": "integer"
+      }
+    }
+  }
+}
+QuizCommand/Welcome: {
+  "description": "Approvazione dei terminali Quiz",
+  "takeoffPort": 1540,
+  "landingPort": 1540,
+  "parameters": {
+    "DeviceToken ":{
+      "type": "string",
+      "description": "Token autenticazione del device"
+    },
+    "Host ":{
+      "type": "string",
+      "description": "Nome Host"
+    },
+    "IP":{
+      "type": "string",
+      "description": "Ip dell'host"
+    }
+  }
+}
+QuizCommand/Revoke: {
+  "description": "Revoca dell'approvazione dei terminali Quiz",
   "takeoffPort": 1540,
   "landingPort": 1540
+}
+QuizCommand/StrictMode: {
+  "description": "Attiva la modalità protetta dei terminali Quiz (windows only)",
+  "takeoffPort": 1540,
+  "landingPort": 1540,
+  "parameters": {
+    "Active ":{
+      "type": "boolean",
+      "description": "Attiva/disattiva la modalità protetta"
+    }
+  }
+}
+$interfaces: {
+  "SidaServerConfiguration": {
+    "type": "object",
+    "body": {
+      "ModoRicercaServer": {
+        "type": "string"
+      },
+      "ServerLicenza": {
+        "type": "string"
+      },
+      "DBFolderForNetbiosAccess": {
+        "type": "string"
+      }
+    }
+  }
 }

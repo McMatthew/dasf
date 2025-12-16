@@ -13,17 +13,19 @@ export interface DasfBinaryBodyItem {
   length?: number; // Only for string
   encoding?: string; // Only for string
 }
-
+export interface DasfInterface {
+    [key: string]: DasfJsonPayloadProperty | DasfInterface;
+}
 // For JSON payload body items
 export interface DasfJsonPayloadProperty {
-  type: 'string' | 'number' | 'boolean' | 'array' | 'json';
+  type: string;
   items?: DasfJsonPayloadItems;
   properties?: { [key: string]: DasfJsonPayloadProperty };
   description?: string; // As seen in parameters, probably useful here too
 }
 
 export interface DasfJsonPayloadItems {
-    type: 'string' | 'number' | 'boolean' | 'array' | 'json';
+    type: string;
     items?: DasfJsonPayloadItems;
     properties?: { [key: string]: DasfJsonPayloadProperty };
 }
@@ -48,6 +50,8 @@ export interface DasfEndpoint {
 
 // Represents the entire DASF document, mapping paths to endpoints
 export interface DasfDocument {
-
-  [path: string]: DasfEndpoint;
+  $interfaces?: {
+    [name: string]: DasfInterface
+  }
+  [path: string]: DasfEndpoint | any;
 }
