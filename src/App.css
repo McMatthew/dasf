@@ -2,13 +2,12 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     background-color: #f8f9fa;
-    color: #212529;
-    padding: 0px;
+    padding: 0;
     margin: 0;
 }
 
 code {
-    background-color: #e9ecef;
+    background-color: rgba(59, 52, 84, 0.74);
     padding: 0.2em 0.4em;
     margin: 0;
     font-size: 85%;
@@ -17,7 +16,7 @@ code {
 }
 
 pre {
-    background: #f1f3f5;
+    background: rgba(69, 39, 90, 0.75);
     border: 1px solid #e8d4fcff;
     padding: 1rem;
     border-radius: 5px;
@@ -31,7 +30,7 @@ pre code {
 }
 
 h2, h3, h4, h5 {
-    color: var(--mantine-color-iris-6);
+    color: var(--mantine-color-iris-3);
     margin-top: 1.5rem;
 }
 
@@ -41,9 +40,9 @@ h2 {
 }
 
 .error-message {
-    color: #d93025;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+    color: #f2ada8;
+    background-color: #611217;
+    border: 1px solid #811824;
     padding: 1rem;
     border-radius: 5px;
 }
@@ -52,10 +51,14 @@ h2 {
 .dasf-viewer {
     max-width: 1024px;
     margin: auto;
-    background: #ffffff;
+    background: rgba(42, 28, 54, 0.61);
+    color: #f1f3f5;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+    flex: 1;
+    width: 100%;
 }
 
 .endpoint-view {
@@ -74,7 +77,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    background: var(--mantine-color-iris-0);
+    background: rgba(69, 39, 90, 0.75);
     padding: 0.75rem 1rem;
     border-radius: 5px;
     margin: 1rem 0;
@@ -88,24 +91,25 @@ h2 {
 .endpoint-section {
     margin-top: 1.5rem;
     padding-left: 1.5rem;
-    border-left: 3px solid var(--mantine-color-iris-2);
+    border-left: 3px solid var(--mantine-color-iris-3);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    overflow: hidden;
 }
 
 th, td {
-    border: 1px solid var(--mantine-color-gray-1);
+    border: 1px solid rgba(69, 39, 90, 0.75);
     padding: 0.75rem;
     text-align: left;
     vertical-align: top;
 }
 
 th {
-    background-color: #f8f9fa;
+    background-color: rgba(69, 39, 90, 0.75);
     font-weight: 600;
 }
 
@@ -115,7 +119,7 @@ ul {
 
 .app-container {
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 100vw;
     gap: 1rem;
     padding: 1rem;
@@ -126,14 +130,15 @@ ul {
     flex: 1;
     overflow: auto;
     height: 100%;
-    border: 1px solid var(--mantine-color-iris-0);
+    border: 1px solid #2a072d;
     border-radius: 5px;
+    background: rgba(42, 28, 54, 0.61);
 }
 
 .viewer-pane {
     flex: 1;
-    overflow: auto;
-    padding: 2rem;
+    overflow: hidden;
+    padding: 0 2rem;
 }
 
 .file-loader {

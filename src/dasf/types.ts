@@ -2,19 +2,20 @@
 
 // Defines a parameter for an endpoint
 export interface DasfParameter {
-  type: 'string' | 'number' | 'boolean';
+  type: "string" | "number" | "boolean";
   description: string;
+  example?: string;
 }
 
 // For binary payload body items
 export interface DasfBinaryBodyItem {
   fieldName: string;
-  dataType: 'uint8' | 'int16' | 'float32' | 'string';
+  dataType: "uint8" | "int16" | "float32" | "string";
   length?: number; // Only for string
   encoding?: string; // Only for string
 }
 export interface DasfInterface {
-    [key: string]: DasfJsonPayloadProperty | DasfInterface;
+  [key: string]: DasfJsonPayloadProperty | DasfInterface;
 }
 // For JSON payload body items
 export interface DasfJsonPayloadProperty {
@@ -25,16 +26,19 @@ export interface DasfJsonPayloadProperty {
 }
 
 export interface DasfJsonPayloadItems {
-    type: string;
-    items?: DasfJsonPayloadItems;
-    properties?: { [key: string]: DasfJsonPayloadProperty };
+  type: string;
+  items?: DasfJsonPayloadItems;
+  properties?: { [key: string]: DasfJsonPayloadProperty };
 }
 
 // Represents the payload (sent or received)
 export interface DasfPayload {
-  type: 'json' | 'binary' | 'text';
-  endianness?: 'big-endian' | 'little-endian' | 'middle-endian';
-  body?: DasfBinaryBodyItem[] | { [key: string]: DasfJsonPayloadProperty } | null;
+  type: "json" | "binary" | "text";
+  endianness?: "big-endian" | "little-endian" | "middle-endian";
+  body?:
+    | DasfBinaryBodyItem[]
+    | { [key: string]: DasfJsonPayloadProperty }
+    | null;
   example?: string;
 }
 
@@ -51,7 +55,7 @@ export interface DasfEndpoint {
 // Represents the entire DASF document, mapping paths to endpoints
 export interface DasfDocument {
   $interfaces?: {
-    [name: string]: DasfInterface
-  }
+    [name: string]: DasfInterface;
+  };
   [path: string]: DasfEndpoint | any;
 }
